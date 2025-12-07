@@ -4,7 +4,7 @@
  */
 function getComputerChoice() {
     let indice = Number(Math.random().toFixed(5));
-    console.log(indice);
+    //console.log(indice);
     if (indice < 0.33333) {
         return "pierre";
     }
@@ -15,13 +15,28 @@ function getComputerChoice() {
 }
 
 /**
- * Fonction qui gère le choix du
- * @returns {string}
+ * Fonction qui affiche le choix de l'ordinateur sur la page web
+ * @param {string} computerChoice
  */
-function getHumanChoice() {
-    return prompt(
-        "Vous jouez quoi ? => 'Pierre, Feuille ou Ciseaux'."
-    ).toLowerCase();
+function displayComputerChoice(computerChoice) {
+    let zoneAffichageComputer = document.querySelector(
+        ".zoneAffichageComputer"
+    );
+    zoneAffichageComputer.innerText = computerChoice;
+}
+
+/**
+ * Fonction qui affiche les 02 scores sur la page web
+ * @param {number} computerScore
+ * @param {number} humanScore
+ */
+function displayScore(computerScore, humanScore) {
+    let zoneScoreOrdinateur = document.querySelector(
+        ".zoneScoreOrdinateur span"
+    );
+    let zoneVotreScore = document.querySelector(".zoneVotreScore span");
+    zoneScoreOrdinateur.innerText = computerScore;
+    zoneVotreScore.innerText = humanScore;
 }
 
 /**
@@ -51,39 +66,71 @@ function playRound(computerChoice, humanChoice) {
             humanScore++;
             return "Vous avez gagnez ! Ciseaux bat Feuille.";
         } else {
-            return "Égalité ! Match nul.";
+            return "Égalité !";
         }
     } catch (erreur) {
         console.log(erreur.message);
     }
 }
 
+/**
+ * Fonction qui gère la logique après une partie de jeu (O5 manches)
+ */
+function logicAfterAGame() {
+    let allButtons = document.querySelectorAll("main > button");
+    for (let j = 0; j < allButtons.length; j++) {
+        allButtons[j].disabled = true;
+    }
+    let newPartButton = document.createElement("button");
+    newPartButton.textContent = "Cliquez ici pour débuter une nouvelle partie";
+    let mainPart = document.querySelector("main");
+    mainPart.appendChild(newPartButton);
+    newPartButton.addEventListener("click", () => {
+        for (let j = 0; j < allButtons.length; j++) {
+            displayComputerChoice("Ordinateur");
+            humanScore = 0;
+            computerScore = 0;
+            displayScore(computerScore, humanScore);
+            allButtons[j].disabled = false;
+        }
+    });
+}
+
 let humanScore = 0;
 let computerScore = 0;
 
+/**
+ * Fonction de jeu proprement dit.
+ */
 function playGame() {
-    console.log("La partie se joue en 05 manches.");
+    let allButtons = document.querySelectorAll("main > button");
+    for (let i = 0; i < allButtons.length; i++) {
+        allButtons[i].addEventListener("click", () => {
+            let humanChoice = allButtons[i].value.toLowerCase();
+            let computerChoice = getComputerChoice();
+            displayComputerChoice(computerChoice);
 
-    for (let i = 0; i < 5; i++) {
-        console.log(`Manche numéro  ${i + 1}:`);
-        let computerChoice = getComputerChoice();
-        let humanChoice = getHumanChoice();
-        console.log("Computer: " + computerChoice);
-        console.log("Human: " + humanChoice);
+            let message = playRound(computerChoice, humanChoice);
+            displayScore(computerScore, humanScore);
+            let zoneAffichageResultat = document.querySelector(
+                ".zoneAffichageResultat"
+            );
 
-        let message = playRound(computerChoice, humanChoice);
-        console.log(message);
-        console.log("Computer: " + computerScore);
-        console.log("Human: " + humanScore);
-    }
+            zoneAffichageResultat.innerText = "";
+            zoneAffichageResultat.innerText = message;
 
-    console.log("Le Jeu est terminé.");
-    if (computerScore > humanScore) {
-        console.log("Vous avez perdu la partie.");
-    } else if (humanScore > computerScore) {
-        console.log("Vous avez remporté la partie.");
-    } else {
-        console.log("Match nul !");
+            if (computerScore == 5) {
+                alert("Dommage ! L'ordinateur remporte la Partie.");
+                message = "";
+                zoneAffichageResultat.innerText = message;
+                logicAfterAGame();
+            } else if (humanScore == 5) {
+                alert("Félicitations 🥳🥳🥳🥳! Vous remportez la Partie.");
+                message = "";
+                zoneAffichageResultat.innerText = message;
+                logicAfterAGame();
+            }
+        });
     }
 }
 

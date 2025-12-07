@@ -1,12 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <script src="./script.js"></script>
+    <link rel="stylesheet" href="./style.css">
+    <script src="./script.js" defer></script>
 </head>
+
 <body>
-    
+    <h1>Jouez à Pierre-Feuille-Ciseaux et défiez l’ordinateur!</h1>
+    <p><strong><u>Instructions :</u></strong> Dès que vous êtes prêt, cliquez sur le bouton de votre choix: Pierre,
+        Feuille ou Ciseaux.
+        Le choix de l’ordinateur s’affichera juste en dessous, suivi immédiatement du résultat de la manche et de la
+        mise à jour du score.
+        À vous de jouer… que le meilleur gagne!
+    </p>
+    <p><strong><u>NB :</u></strong> Le premier a atteindre 05 points, remporte la partie.</p>
+
+    <main>
+        <div class="zoneAffichageComputer"><Strong>Ordinateur</Strong></div>
+        <div class="zoneScoreOrdinateur">
+            Score de l'ordinateur : <span>0</span>
+        </div>
+        <div class="zoneAffichageResultat"></div>
+        <h3>Vous</h3>
+        <button value="Pierre">Pierre</button>
+        <button value="Feuille">Feuille</button>
+        <button value="Ciseaux">Ciseaux</button>
+        <br>
+        <br>
+        <div class="zoneVotreScore">
+            Votre score : <span>0</span>
+        </div>
+    </main>
 </body>
+
 </html>
