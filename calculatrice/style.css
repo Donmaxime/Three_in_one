@@ -1,0 +1,128 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* background-color: #1c1c1e; */
+    font-family: "Segoe UI", sans-serif;
+}
+
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.calc-container {
+    display: grid;
+    min-width: 320px;
+    width: 50vw;
+    background-color: #2c2c2e;
+    border-radius: 24px;
+    padding: 16px;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    overflow: hidden;
+}
+
+/* Écran */
+.screen {
+    grid-column: 1 / 5;
+    background-color: #1c1c2e;
+    border-radius: 16px;
+    padding: 20px 24px 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: flex-end;
+    min-height: 120px;
+    margin-bottom: 6px;
+}
+
+.screen-expression {
+    font-size: 18px;
+    color: #8e8ea0;
+    margin-bottom: 8px;
+    letter-spacing: 0.5px;
+}
+
+.screen-result {
+    font-size: 56px;
+    font-weight: 300;
+    color: #ffffff;
+    line-height: 1;
+}
+
+/* Boutons de base */
+.btn {
+    border: none;
+    border-radius: 14px;
+    font-size: 22px;
+    font-weight: 400;
+    cursor: pointer;
+    padding: 0;
+    height: 68px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: filter 0.1s ease, transform 0.08s ease;
+    user-select: none;
+}
+
+.btn:active {
+    filter: brightness(1.3);
+    transform: scale(0.95);
+}
+
+/* Boutons clairs (C, +/-, %) */
+.btn-light {
+    background-color: #d4d3d8;
+    color: #1c1c1e;
+}
+
+.btn-light:hover {
+    background-color: #e0dfe4;
+}
+
+/* Boutons sombres (chiffres) */
+.btn-dark {
+    background-color: #3a3a3c;
+    color: #ffffff;
+}
+
+.btn-dark:hover {
+    background-color: #48484a;
+}
+
+/* Boutons opérateurs (÷, ×, −, +) */
+.btn-operator {
+    background-color: #5a52cc;
+    color: #ffffff;
+}
+
+.btn-operator:hover {
+    background-color: #6b63d9;
+}
+
+/* Bouton égal */
+.btn-equals {
+    background-color: #30a86d;
+    color: #ffffff;
+}
+
+.btn-equals:hover {
+    background-color: #38c07c;
+}
+
+/* Bouton 0 (occupe 2 colonnes) */
+.btn-zero {
+    grid-column: span 2;
+    justify-content: center;
+    padding-left: 26px;
+}

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculatrice</title>
+    <link rel="stylesheet" href="./style.css" />
+    <script src="./script.js" defer></script>
+</head>
+
+<body>
+    <main>
+        <div style="display: flex; flex-direction: column; margin: 10px; align-items: center;">
+            <h4 style="margin: 15px;">Effectuez vos calculs en toute simplicité.</h4>
+            <a href="../index.html" style="width: 25%;">Retour</a>
+        </div>
+        <div class="calc-container">
+            <div class="screen">
+                <div class="screen-expression"></div>
+                <div class="screen-result">56</div>
+            </div>
+
+            <button value="C" class="btn btn-light">C</button>
+            <button value="%" class="btn btn-light">%</button>
+            <button value="⌫" class="btn btn-light">⌫</button>
+            <button value="/" class="btn btn-operator">÷</button>
+
+            <button value="7" class="btn btn-dark">7</button>
+            <button value="8" class="btn btn-dark">8</button>
+            <button value="9" class="btn btn-dark">9</button>
+            <button value="*" class="btn btn-operator">×</button>
+
+            <button value="4" class="btn btn-dark">4</button>
+            <button value="5" class="btn btn-dark">5</button>
+            <button value="6" class="btn btn-dark">6</button>
+            <button value="-" class="btn btn-operator">−</button>
+
+            <button value="1" class="btn btn-dark">1</button>
+            <button value="2" class="btn btn-dark">2</button>
+            <button value="3" class="btn btn-dark">3</button>
+            <button value="+" class="btn btn-operator">+</button>
+
+            <button value="0" class="btn btn-dark btn-zero">0</button>
+            <button value="." class="btn btn-dark">.</button>
+            <button value="=" class="btn btn-equals">=</button>
+        </div>
+    </main>
+</body>
+
+</html>
